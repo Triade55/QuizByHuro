@@ -1,0 +1,12 @@
+#countdown{
+    font-weight: bolder;
+    font-family: 'Algerian', Courier, monospace;
+}
+.box-huro{
+    box-shadow: 5px 5px 10px #888888, -5px -5px 10px #888888;
+}
+/* Styles pour la barre de progression */
+.custom-progress {
+    height: 20px;
+    background-color: #f8f9fa;
+}

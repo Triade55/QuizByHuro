@@ -1,0 +1,15 @@
+{% for history in histories %}
+{% if history.user_responce is not None %}
+
+    {% if history.istrue == True %}
+        <div class="text-success h5" >
+            {{history.num1}}{{history.signe}}{{history.num2}} = {{history.user_responce}}
+        </div>
+    {% else %}
+        <div class="text-danger h5">
+            {{history.num1}}{{history.signe}}{{history.num2}} = {{history.user_responce}} <br>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% endfor %}
