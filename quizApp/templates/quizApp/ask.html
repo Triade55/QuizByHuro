@@ -1,0 +1,48 @@
+<div class="offset-3 col-6 offset-2">
+
+    <div class="h1">
+        {{quiz_data.question}}
+    </div>
+    <form action="" method="post" class="form-control border-0">
+        {% csrf_token %}
+        <input type="hidden" name="key" value="{{quiz_data.key}}">
+        {% for reponse in quiz_data.answers %}
+        <input type="radio" class="my-2" name="reponse" id="" value="{{reponse}}">&nbsp; {{reponse}}
+        <br>
+        {% endfor %}
+        <button 
+        hx-trigger = "click"
+        hx-post="{% url 'reponse_quizApp' %}"
+        hx-target="#ask"
+        hx-swap=""
+        class="form-control col-2"
+        type="submit">envoyer</button>
+    </form>
+    <div class="text-info">
+        <div class="row">
+            <div class="col-1">
+                {% if explanation %}
+                <i class="bi h1 bi-exclamation-triangle"></i>
+                
+                {% endif %}
+            </div>
+            <div class="col-11">
+                {{explanation}}
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+<div class="col-1 border my-auto ">
+    <div class="d-flex">
+
+        Score <em class="text-primary ">:{{score}}</em>
+    </div>
+    {% if verif %}
+        {% include "math/responseTrue.html" %}
+    {% elif verif == False %}
+        {% include "math/responseFalse.html" %}
+    {% endif %}
+</div>

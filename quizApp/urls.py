@@ -19,13 +19,11 @@ from django.urls import path,include
 from mathematique import urls as urls_math
 from authentification.views import dashboard
 from authentification import urls as urls_authentification
-from quizApp import urls as urls_quizApp
+from quizApp import views
 urlpatterns = [
-    path('', dashboard,name="dashboard"),
-    path('QuizMath/', include(urls_math)),
-    path('QuizApp/', include(urls_quizApp)),
-    path('auth/', include(urls_authentification)),
-    path('admin/', admin.site.urls),
+    path('', views.index,name="home_quizApp"),
+    path('reponse', views.reponse,name="reponse_quizApp"),
+    
 ]
 
     
