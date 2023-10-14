@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-8">
+    <!-- .text
+    <h1  style="display: flex;align-items: center;" class=" border">
+      <div >{{mystere.num1}}</div>
+      <div>{{mystere.signe}}</div>
+      <div >{{mystere.num2}}</div>
+    </h1> -->
+    <div id="huroY" class="text-center h1 fw-bolder my-3">
+      <em id="num1">{{mystere.num1}}</em>
+      <em id="signe">{{mystere.signe}}</em>
+      <em id="num2">{{mystere.num2}}</em>
+    </div>
+    
+
+    {% if verif_resultat == True %}
+    {% include 'math/responseTrue.html' %}
+    {% endif %}
+    {% if verif_resultat == False  %}
+    {% include 'math/responseFalse.html' %}
+    {% endif %}
+    
+  </div>
+  <div class="col-4 overflow-y h-100" style="height: 100px;" >
+    {% include 'math/history.html' %}
+  </div>
+
+</div>

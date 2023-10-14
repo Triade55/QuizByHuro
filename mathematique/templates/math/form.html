@@ -1,0 +1,17 @@
+<form action="" method="post" id="myForm" class="form-control d-flex gap-2 border-0">
+  {% csrf_token %}
+    <input type="text" name="resultat" id= "resultat_id" class="form-control" placeholder="you can enter your results here">
+  <button
+  hx-trigger="click"
+  hx-post="{% url 'question_math' %}"
+    hx-target="#ask"
+    hx-swap = "outerHTML"
+    hx-vals="js:{question:getquestion()}" 
+    id="btnenvoyer"
+    type="submit"
+    class="btn btn-info"
+    >
+    Envoyers
+  </button>
+  </form>
+  

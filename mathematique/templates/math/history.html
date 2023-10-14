@@ -1,15 +1,15 @@
-{% for history in histories %}
-{% if history.user_responce is not None %}
+<div class="row">
 
-    {% if history.istrue == True %}
-        <div class="text-success h5" >
-            {{history.num1}}{{history.signe}}{{history.num2}} = {{history.user_responce}}
-        </div>
-    {% else %}
-        <div class="text-danger h5">
-            {{history.num1}}{{history.signe}}{{history.num2}} = {{history.user_responce}} <br>
-        </div>
+    {% for history in histories %}
+    {% if history.user_responce is not None %}
+    <div class="col-1 border-right-left text-center">
+        {% if history.istrue == True %}
+        <em class="text-success">{{history.question}} = {{history.user_responce}} </em>           
+        {% else %}
+            <em class="text-danger">{{history.question}} = {{history.user_responce}} </em> 
+            {% endif %}
+    </div>
     {% endif %}
-{% endif %}
-
+    
 {% endfor %}
+</div>

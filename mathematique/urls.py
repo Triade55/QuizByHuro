@@ -19,7 +19,8 @@ from django.urls import path,include
 from . import views
 urlpatterns = [
     path('', views.index,name='home_math'),
-    path('responce', views.reponse,name='responce_math'),
+    path('question', views.Question,name='question_math'),
+    path('history', views.history,name='history_math'),
     path('timeout', views.timeout,name='timeout_math'),
     path('reset', views.resetgame,name='reset_math'),
 ]

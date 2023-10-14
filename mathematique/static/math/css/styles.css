@@ -1,3 +1,4 @@
+
 #countdown{
     font-weight: bolder;
     font-family: 'Algerian', Courier, monospace;
@@ -5,8 +6,27 @@
 .box-huro{
     box-shadow: 5px 5px 10px #888888, -5px -5px 10px #888888;
 }
+.boxr{
+/* Crée deux ombres : une bleue et une rouge */
+box-shadow: 5px 5px blue, -5px -5px red;
+
+}
 /* Styles pour la barre de progression */
 .custom-progress {
     height: 20px;
     background-color: #f8f9fa;
+}
+.question_div{
+    font-size: 3.5em;
+    font-weight: bolder;
+    font-family: 'Algerian', Courier, monospace;
+    text-align: center;
+}
+.my-10{
+    margin-top: 10em;
+    padding: 1em;  
+}
+.border-right-left{
+    border-right: 1px solid var(--bs-black);
+    border-left: 1px solid var(--bs-black);
 }

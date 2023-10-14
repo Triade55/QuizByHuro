@@ -1,64 +1,15 @@
-<div class="row">
-  <div class="col-8">
-    <!-- .text
-    <h1  style="display: flex;align-items: center;" class=" border">
-      <div >{{mystere.num1}}</div>
-      <div>{{mystere.signe}}</div>
-      <div >{{mystere.num2}}</div>
-    </h1> -->
-    <div id="huroY" class="text-center h1 fw-bolder my-3">
-      <em id="num1">{{mystere.num1}}</em>
-      <em id="signe">{{mystere.signe}}</em>
-      <em id="num2">{{mystere.num2}}</em>
+<div class="" id="ask"> 
+    <div id="question_div" class="question_div">{{question}}</div>
+    
+    {% include "math/form.html" %}
+
+    <div class="col-12 text-center h2">
+
+        {% if verif == "True" %}
+        {% include "math/responseTrue.html" %}
+        {% elif verif == "False" %}
+        {% include "math/responseFalse.html" %}
+        {% endif %}
     </div>
-    
-    <form action="" method="post" hx-reset="true" id="myForm" class="form-control d-flex gap-2">
-      <input type="hidden" value="{{mystere.pk}}" name="ask_pk"/>
-    {% csrf_token %}
-    {% for field in form %}
-    
-      {{field}}
-    {% endfor %}
-    <button
-    hx-trigger="click"
-    hx-post="{% url 'responce_math' %}"
-      hx-target="#ask"
-      {% comment %} hx-vals="js:{num1:getnum1(),signe:getsigne(),num2:getnum2(),}" {% endcomment %}
-      id="btnenvoyer"
-      type="submit"
-      class="btn btn-info"
-      >
-      Envoyers
-    </button>
-    </form>
-    <form action="" method="post" hx-reset="true" id="myForm" class="form-control d-flex gap-2">
-      {% csrf_token %}
-      <input type="hidden" value="{{mystere.pk}}" name="ask_pk"/>
-      <input type="hidden" value="" name="resultat"/>
-      
-      <button
-      hx-trigger="click"
-      hx-post="{% url 'responce_math' %}"
-        hx-target="#ask"
-        {% comment %} hx-vals="js:{num1:getnum1(),signe:getsigne(),num2:getnum2(),}" {% endcomment %}
-        id="btnenvoyer"
-        type="submit"
-        class="btn btn-info"
-        >
-        passer
-      </button>
-    </form>
-    
-    {% if verif_resultat == True %}
-    {% include 'math/responseTrue.html' %}
-    {% endif %}
-    {% if verif_resultat == False  %}
-    {% include 'math/responseFalse.html' %}
-    {% endif %}
-    
-  </div>
-  <div class="col-4 overflow-y h-100" style="height: 100px;" >
-    {% include 'math/history.html' %}
-  </div>
 
 </div>

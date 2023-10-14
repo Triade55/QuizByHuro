@@ -16,23 +16,21 @@
                 <a href="{% url 'reset_math' %}" class="btn btn-secondary">Reset</a>
             </div>
             <div class="col-7 h2">
-                <b class="text-uppercase"> Les historiques de votre reponses </b>
+                <b class="text-uppercase"> your response history </b>
                 {% for question in questions %}
                     {% if question.user_responce is not None %}
                         {% if question.istrue %}
                             <div class="text-success">
-                                {{question}} 
+                                {{question.question}} = {{question.user_responce}}
                                 <i class="bi bi-check-circle bi-xl"></i> 
                             </div> 
                         {% elif question.istrue == False %}
                             <div class="text-danger">
-                                {{question.num1}}{{question.signe}}{{question.num2}} = {{question.user_responce}}
-                                <i class="bi bi-x-circle bi-xl"></i>
+                                {{question.question}} = {{question.user_responce}}                                <i class="bi bi-x-circle bi-xl"></i>
                             </div>  <!-- Icône de fermeture plus grande -->
                         {% elif question.user_responce == 'passer' %}
                             <div class="text-warning">
-                                {{question.num1}}{{question.signe}}{{question.num2}} = Passer
-                                <i class="bi bi-exclamation-triangle"></i>
+                                {{question.question}} = {{question.user_responce}}                                <i class="bi bi-exclamation-triangle"></i>
                             </div>
                         {% endif %}
                     {% else %}
@@ -46,14 +44,11 @@
 
             </div>
             <div class="col-4 border h-100 text-center box-huro">
-                nombre question :<em>{{count}}</em> <br>
-                nombre question repondu :<em>{{quetion_repondu}}</em> <br>
-                nombre question pas repondu :<em>{{quetion_pasrepondu}}</em> <br>
-                nombre question fausse : <em>{{numFalse}}</em>  <br>
-                nombre question vrai : <em> {{numTrue}}</em>
+                total question :<em>{{count}}</em> <br>
+                answer true : <em> {{numTrue}}</em> <br>
+                answer false : <em>{{numFalse}}</em> 
                 <div class="progress custom-progress">
                     <div class="progress-bar bg-success" style="width: {{pourcentage.vrai}}%;">{{numTrue}}</div>
-                    <div class="progress-bar bg-warning" style="width: {{pourcentage.ras}}%;">{{quetion_pasrepondu}}</div>
                     <div class="progress-bar bg-danger" style="width: {{pourcentage.faux}}%;">{{numFalse}}</div>
                 </div>
             </div>

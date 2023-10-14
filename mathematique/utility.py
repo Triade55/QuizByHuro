@@ -8,7 +8,7 @@ def testfraction():
     return Fraction(25,5)
 def user_is_active(view_func):
     def wrapped_view(request, *args, **kwargs):
-        if request.user.game_math:
+        if request.user.mathQuiz:
             # L'utilisateur est actif, exécutez la vue demandée
             return view_func(request, *args, **kwargs)
         else:
@@ -34,29 +34,36 @@ def get_result(num1,num2,ope):
     return str(resultat)
 
     
-def select_nombre(user):
+def select_nombre():
     dictionnaire = {}
-    listeoperation = ['+','-','X','÷']
+    listeoperation = ['+','-','*','/']
     for i in range(1,3):
-        dictionnaire['num'+str(i)] = random.randrange(10)
+        dictionnaire['num'+str(i)] = random.randrange(1,10)
     signe = random.choice(listeoperation)
-    saveQuestion = QuestionMath.objects.create(
-        user=user,
-        num1 = dictionnaire['num1'],
-        num2 = dictionnaire['num2'],
-        signe = signe,
-        responce = get_result(dictionnaire['num1'],dictionnaire['num2'],signe),
-    )
-    
-    return saveQuestion
+    question = str(dictionnaire['num1'])+signe+str(dictionnaire['num2'])
+    return question
 
-def verif_resultat(ask_pk:int,user_responce):
-    Question = QuestionMath.objects.get(pk=ask_pk)
-    if user_responce == Question.responce:
-        verif = True
-        Question.istrue = verif
+def verif_resultat(question:str,user_responce:str):
+    evaluate = eval(question)
+    evaluate = Fraction(evaluate).limit_denominator()
+    re = False
+    try:
+        user_responce = Fraction(user_responce).limit_denominator()
+    except:
+        user_responce = None
     else:
-        verif = False
-    Question.user_responce = user_responce
-    Question.save()
-    return verif
+        if evaluate == user_responce:
+            re = True
+            return re
+    
+
+    return re
+
+def Pourcentage(vrai,faux):
+    pour = {}
+    tout = vrai+faux
+    pour['vrai'] = (vrai*100)/tout
+    pour['faux'] = (faux*100)/tout
+
+    return pour
+
